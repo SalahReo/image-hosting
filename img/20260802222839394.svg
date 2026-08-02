@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">连续三个1的 Mealy 检测器</title>
+  <desc id="desc">上半部分展示从没有连续1到检测出至少三个连续1的状态转移，以及输入0时清零；下半部分用输入1011110演示状态与输出变化。</desc>
+  <defs>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#16845b"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#d97706"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif; fill:#172033; }
+    .title { font-size:25px; font-weight:600; }
+    .subtitle { font-size:17px; fill:#5c667a; }
+    .state { fill:#f5f7fb; stroke:#cbd3df; stroke-width:3; }
+    .state-detected { fill:#ecf8f2; stroke:#16845b; stroke-width:4; }
+    .state-name { font-size:25px; font-weight:600; text-anchor:middle; }
+    .state-count { font-size:17px; text-anchor:middle; }
+    .state-sample { font-size:16px; fill:#5c667a; text-anchor:middle; }
+    .edge { fill:none; stroke-width:3; }
+    .edge-gray { stroke:#475569; marker-end:url(#arrow-gray); }
+    .edge-blue { stroke:#2563eb; marker-end:url(#arrow-blue); }
+    .edge-green { stroke:#16845b; marker-end:url(#arrow-green); }
+    .edge-orange { stroke:#d97706; marker-end:url(#arrow-orange); }
+    .edge-label { font-size:17px; font-weight:600; text-anchor:middle; }
+    .blue-label { fill:#2563eb; }
+    .green-label { fill:#16845b; }
+    .orange-label { fill:#b75f00; }
+    .reset-branch { fill:none; stroke:#d97706; stroke-width:2.5; marker-end:url(#arrow-orange); }
+    .panel { fill:#f8fafc; stroke:#cbd3df; stroke-width:2; }
+    .grid { stroke:#dbe1ea; stroke-width:1.5; }
+    .grid-dashed { stroke:#dbe1ea; stroke-width:1.2; stroke-dasharray:5 5; }
+    .panel-title { font-size:19px; font-weight:600; }
+    .row-label { font-size:17px; font-weight:600; }
+    .cell { font-size:18px; text-anchor:middle; }
+    .detected-cell { font-size:17px; font-weight:600; fill:#16845b; text-anchor:middle; }
+    .detect-fill { fill:#e8f7ef; }
+  </style>
+
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="45" y="46" class="title">连续 3 个 1 的 Mealy 检测器</text>
+  <text x="45" y="76" class="subtitle">边标签 = 输入 / 输出；状态记录“末尾已有几个连续 1”，输出在读入当前位时产生</text>
+
+  <path d="M34 245 H65" class="edge edge-gray"/>
+  <text x="30" y="227" class="subtitle">开始</text>
+
+  <circle cx="145" cy="245" r="78" class="state"/>
+  <circle cx="440" cy="245" r="78" class="state"/>
+  <circle cx="735" cy="245" r="78" class="state"/>
+  <circle cx="1030" cy="245" r="78" class="state-detected"/>
+
+  <text x="145" y="225" class="state-name">S₀</text>
+  <text x="145" y="252" class="state-count">连续 1：0 个</text>
+  <text x="145" y="280" class="state-sample">末尾：—</text>
+  <text x="440" y="225" class="state-name">S₁</text>
+  <text x="440" y="252" class="state-count">连续 1：1 个</text>
+  <text x="440" y="280" class="state-sample">末尾：…1</text>
+  <text x="735" y="225" class="state-name">S₂</text>
+  <text x="735" y="252" class="state-count">连续 1：2 个</text>
+  <text x="735" y="280" class="state-sample">末尾：…11</text>
+  <text x="1030" y="220" class="state-name">S₃</text>
+  <text x="1030" y="248" class="state-count">至少 3 个</text>
+  <text x="1030" y="276" class="state-sample">检出态：…111</text>
+
+  <path d="M223 245 H361" class="edge edge-blue"/>
+  <path d="M518 245 H656" class="edge edge-blue"/>
+  <path d="M813 245 H951" class="edge edge-green"/>
+  <text x="292" y="218" class="edge-label blue-label">1 / 0</text>
+  <text x="587" y="218" class="edge-label blue-label">1 / 0</text>
+  <text x="882" y="218" class="edge-label green-label">1 / 1 · 首次检出</text>
+
+  <path d="M106 176 C72 139 86 105 145 105 C204 105 218 139 184 176" class="edge edge-orange"/>
+  <text x="145" y="97" class="edge-label orange-label">0 / 0</text>
+  <path d="M991 176 C957 139 971 105 1030 105 C1089 105 1103 139 1069 176" class="edge edge-green"/>
+  <text x="1030" y="97" class="edge-label green-label">1 / 1 · 持续检出</text>
+
+  <path d="M440 323 V410" class="reset-branch"/>
+  <path d="M735 323 V410" class="reset-branch"/>
+  <path d="M1030 323 V410" class="reset-branch"/>
+  <path d="M1030 410 H145 V324" class="edge edge-orange"/>
+  <rect x="350" y="378" width="500" height="31" rx="15" fill="#fff4e6"/>
+  <text x="600" y="400" class="edge-label orange-label">任一状态读到 0 / 0：连续计数清零，回到 S₀</text>
+
+  <rect x="45" y="448" width="1110" height="275" rx="18" class="panel"/>
+  <text x="72" y="484" class="panel-title">例：输入 1 0 1 1 1 1 0（允许重叠检测）</text>
+  <text x="1125" y="484" class="subtitle" text-anchor="end">“1 · 检出”表示输出为 1</text>
+
+  <rect x="735" y="503" width="260" height="208" class="detect-fill"/>
+  <line x1="72" y1="503" x2="1125" y2="503" class="grid"/>
+  <line x1="72" y1="555" x2="1125" y2="555" class="grid"/>
+  <line x1="72" y1="607" x2="1125" y2="607" class="grid"/>
+  <line x1="72" y1="659" x2="1125" y2="659" class="grid"/>
+  <line x1="72" y1="711" x2="1125" y2="711" class="grid"/>
+  <line x1="215" y1="503" x2="215" y2="711" class="grid"/>
+  <line x1="345" y1="503" x2="345" y2="711" class="grid-dashed"/>
+  <line x1="475" y1="503" x2="475" y2="711" class="grid-dashed"/>
+  <line x1="605" y1="503" x2="605" y2="711" class="grid-dashed"/>
+  <line x1="735" y1="503" x2="735" y2="711" class="grid-dashed"/>
+  <line x1="865" y1="503" x2="865" y2="711" class="grid-dashed"/>
+  <line x1="995" y1="503" x2="995" y2="711" class="grid-dashed"/>
+  <line x1="1125" y1="503" x2="1125" y2="711" class="grid"/>
+
+  <text x="88" y="538" class="row-label">时刻 t</text>
+  <text x="88" y="590" class="row-label">输入 x</text>
+  <text x="88" y="642" class="row-label">读入后状态</text>
+  <text x="88" y="694" class="row-label">输出 y</text>
+
+  <g class="cell">
+    <text x="280" y="538">1</text><text x="410" y="538">2</text><text x="540" y="538">3</text><text x="670" y="538">4</text><text x="800" y="538">5</text><text x="930" y="538">6</text><text x="1060" y="538">7</text>
+    <text x="280" y="590">1</text><text x="410" y="590">0</text><text x="540" y="590">1</text><text x="670" y="590">1</text><text x="800" y="590">1</text><text x="930" y="590">1</text><text x="1060" y="590">0</text>
+    <text x="280" y="642">S₁</text><text x="410" y="642">S₀</text><text x="540" y="642">S₁</text><text x="670" y="642">S₂</text><text x="800" y="642">S₃</text><text x="930" y="642">S₃</text><text x="1060" y="642">S₀</text>
+    <text x="280" y="694">0</text><text x="410" y="694">0</text><text x="540" y="694">0</text><text x="670" y="694">0</text><text x="1060" y="694">0</text>
+  </g>
+  <text x="800" y="694" class="detected-cell">1 · 检出</text>
+  <text x="930" y="694" class="detected-cell">1 · 检出</text>
+</svg>
