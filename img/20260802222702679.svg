@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" role="img" aria-labelledby="title desc">
+  <title id="title">正边沿D触发器时序图</title>
+  <desc id="desc">复位结束后，D触发器只在四个时钟上升沿采样D，并将采样值保持在Q上。</desc>
+  <style>
+    :root { --bg:#ffffff; --fg:#172033; --muted:#5c667a; --grid:#cbd3df; --line:#334155; --blue:#2563eb; --orange:#d97706; --green:#16845b; --red:#c2414b; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#111827; --fg:#eef2ff; --muted:#b8c0d4; --grid:#465064; --line:#d6deee; --blue:#7ba7ff; --orange:#ffbb62; --green:#58d3a5; --red:#ff8992; } }
+    text { font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif; fill:var(--fg); }
+    .bg { fill:var(--bg); }
+    .axis { stroke:var(--grid); stroke-width:1.5; }
+    .edge { stroke:var(--blue); stroke-width:2; stroke-dasharray:7 7; }
+    .wave { fill:none; stroke-width:4; stroke-linejoin:round; }
+    .d { stroke:var(--orange); }
+    .clk { stroke:var(--blue); }
+    .rst { stroke:var(--red); }
+    .q { stroke:var(--green); }
+    .title { font-size:24px; font-weight:500; }
+    .label { font-size:21px; font-weight:500; }
+    .note { font-size:17px; fill:var(--muted); }
+    .sample { fill:var(--blue); stroke:var(--bg); stroke-width:2; }
+    text { fill:#172033; }
+    .bg { fill:#ffffff; }
+    .axis { stroke:#cbd3df; }
+    .edge { stroke:#2563eb; }
+    .d { stroke:#d97706; }
+    .clk { stroke:#2563eb; }
+    .rst { stroke:#c2414b; }
+    .q { stroke:#16845b; }
+    .note { fill:#5c667a; }
+    .sample { fill:#2563eb; stroke:#ffffff; }
+  </style>
+  <rect class="bg" width="1100" height="560"/>
+  <text x="45" y="45" class="title">正边沿 DFF：只在 CLK 的上升沿读取 D</text>
+  <line x1="150" y1="110" x2="1030" y2="110" class="axis"/><line x1="150" y1="210" x2="1030" y2="210" class="axis"/><line x1="150" y1="310" x2="1030" y2="310" class="axis"/><line x1="150" y1="410" x2="1030" y2="410" class="axis"/>
+  <text x="75" y="125" class="label">D</text><text x="65" y="225" class="label">CLK</text><text x="65" y="325" class="label">RST</text><text x="75" y="425" class="label">Q</text>
+
+  <path d="M150 145 H300 V85 H500 V145 H700 V85 H900 V145 H1030" class="wave d"/>
+  <path d="M150 245 H220 V185 H300 V245 H420 V185 H500 V245 H620 V185 H700 V245 H820 V185 H900 V245 H1030" class="wave clk"/>
+  <path d="M150 345 H190 V285 H1030" class="wave rst"/>
+  <path d="M150 445 H420 V385 H620 V445 H820 V385 H1030" class="wave q"/>
+
+  <line x1="220" y1="72" x2="220" y2="465" class="edge"/><line x1="420" y1="72" x2="420" y2="465" class="edge"/><line x1="620" y1="72" x2="620" y2="465" class="edge"/><line x1="820" y1="72" x2="820" y2="465" class="edge"/>
+  <circle cx="220" cy="145" r="7" class="sample"/><circle cx="420" cy="85" r="7" class="sample"/><circle cx="620" cy="145" r="7" class="sample"/><circle cx="820" cy="85" r="7" class="sample"/>
+  <text x="220" y="500" class="note" text-anchor="middle">采样0</text><text x="420" y="500" class="note" text-anchor="middle">采样1</text><text x="620" y="500" class="note" text-anchor="middle">采样0</text><text x="820" y="500" class="note" text-anchor="middle">采样1</text>
+  <text x="590" y="535" class="note" text-anchor="middle">虚线之间即使 D 改变，Q 仍保持；RST=0 时先清零</text>
+</svg>
